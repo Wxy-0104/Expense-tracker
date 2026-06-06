@@ -1,0 +1,208 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-color: white;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.add-section h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.type-toggle {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.type-btn.active {
+    background-color: #e74c3c;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+#addRecordBtn {
+    width: 100%;
+    padding: 14px;
+    background-color: #3489db;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* 统计区域 */
+.summary-section {
+    margin: 20px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.summary-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.summary-card h3 {
+    font-size: 28px;
+    margin: 8px 0;
+    font-weight: bold;
+}
+
+.income h3 {
+    color: #27ae60;
+}
+
+.expense h3 {
+    color: #e74c3c;
+}
+
+.balance h3 {
+    color: #2980b9;
+    font-size: 32px;
+}
+
+/* 筛选区域 */
+
+.filter-section {
+    margin: 0 20px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+#searchInput {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* 列表区域 */
+
+.list-section {
+    margin: 20px;
+}
+
+#recordList {
+    list-style: none;
+    padding: 0;
+}
+
+#recordList li {
+    background-color: white;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Footer */
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.footer button{
+    margin-top:10px;
+    padding:8px 16px;
+    background: #e74c3c;
+    color:white;
+    border:none;
+    border-radius: 6px;
+}
+

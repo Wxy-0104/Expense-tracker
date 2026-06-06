@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记账本</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- 导航区域 -->
+    <header class="header">
+        <div class="title">记账本</div>
+
+        <div class="controls">
+            <!-- 月份筛选 -->
+            <select id="monthFilter">
+                <option value="">全部月份</option>
+
+                <!-- JS动态生成全部月份选项 -->
+            </select>
+
+            <select id="languageSelect">
+                <option value="jp">日本語</option>
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+
+
+    </header>
+
+    <!-- 添加记录表单 -->
+    <section calss="add-section">
+        <h2 id="addTitle">添加新记录</h2>
+
+        <div class="type-toggle">
+            <button id="incomeBtn" class="type-btn active">收入</button>
+            <button id="expenseBtn" class="type-btn">支出</button>
+        </div>
+
+        <div class="form-group">
+
+            <input type="number" id="amountInput" placeholder="金额" step="1">
+
+            <select id="categorySelect">
+                <option value="">请选择分类</option>
+            </select>
+
+            <input type="date" id="dataInput">
+
+            <input type="text" id="noteInput" placeholder="备注">
+
+        </div>
+
+        <button id="addRecordBtn">添加记录</button>
+    </section>
+
+    <!-- 统计区域 -->
+    <section class="summary-section">
+
+        <div class="summary-grid">
+            <div class="summary-card income">
+
+                <p id="incomeLabel">总收入</p>
+                <h3 id="totalIncome">0</h3>
+            </div>
+
+            <div class="summary-card expense">
+                <p id="expenseLabel">总支出</p>
+                <h3 id="totalExpense">0</h3>
+            </div>
+
+            <div class="summary-card balance">
+                <P id="balanceLabel">结余</P>
+                <h3 id="balance">0</h3>
+            </div>
+    </section>
+
+    <!-- 筛选工具栏 -->
+    <section class="filter-section">
+        <button id="filterAll" class="filter-btn active">全部</button>
+        <button id="filterIncome" class="filter-btn">收入</button>
+        <button id="filterExpense" class="filter-btn">支出</button>
+
+        <input type="text" id="searchInput" placeholder="搜索备注或分类">
+    </section>
+
+    <!-- 记录列表 -->
+    <section class="list-section">
+        <h3 id="listTitle">记录列表</h3>
+        <ul id="recordList"></ul>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>共<span id="totalCount">0</span>条记录</p>
+        <button id="clearDataBtn">清空所有数据</button>
+    </footer>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
