@@ -64,9 +64,16 @@ select {
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 .type-btn.active {
+    background-color: #27ae60;
+    color: white;
+}
+
+#expenseBtn.active {
     background-color: #e74c3c;
 }
 
@@ -197,12 +204,11 @@ select {
     font-size: 14px;
 }
 
-.footer button{
-    margin-top:10px;
-    padding:8px 16px;
+.footer button {
+    margin-top: 10px;
+    padding: 8px 16px;
     background: #e74c3c;
-    color:white;
-    border:none;
+    color: white;
+    border: none;
     border-radius: 6px;
 }
-
