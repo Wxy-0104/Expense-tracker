@@ -12,6 +12,30 @@ let currentFilter = "all";
 //search keyword
 let currentSearch = "";
 
+//dom
+const dom = {
+    langSelect: document.getElementById("languageSelect"),
+    monthFilter: document.getElementById("monthFilter"),
+    title: document.querySelector(".title"),
+    addTitle: document.getElementById("addTitle"),
+    incomeLabel: document.getElementById("incomeLabel"),
+    expenseLabel: document.getElementById("expenseLabel"),
+    balanceLabel: document.getElementById("balanceLabel"),
+    listTitle: document.getElementById("listTitle"),
+    searchInput: document.getElementById("searchInput"),
+    addRecordBtn: document.getElementById("addRecordBtn"),
+    clearDataBtn: document.getElementById("clearDataBtn"),
+    amountInput: document.getElementById("amountInput"),
+    categorySelect: document.getElementById("categorySelect"),
+    dateInput: document.getElementById("dateInput"),
+    noteInput: document.getElementById("noteInput"),
+    typeSelect: document.getElementById("typeSelect"),
+    activeTypeBtn: document.querySelectorAll(".type-btn.active"),
+
+
+
+}
+
 //i18n语言包
 const i18n = {
     "jp": {
@@ -99,24 +123,24 @@ document.addEventListener("DOMContentLoaded", init);
 //事件绑定
 function bindEvents() {
     //语言切换
-    const langSelect = document.getElementById("languageSelect");
-    langSelect.addEventListener("change", () => {
-        changeLanguage(langSelect.value);
+    dom.langSelect.addEventListener("change", () => {
+        changeLanguage(dom.langSelect.value);
     })
     //月份筛选
     dom.monthFilter.addEventListener("change", () => {
-        currentMonth = this.value;
+        currentMonth = dom.monthFilter.value;
         render();
     })
     //类型切换（收入/支出）
 
-    //添加记录按钮
-
+    //添加按钮
+    dom.addRecordBtn.addEventListener("click", addRecord);
     //搜索输入
 
     //筛选按钮
 
     //清空数据按钮
+    dom.clearDataBtn.addEventListener("click", clearData);
 }
 
 //语言切换
@@ -127,6 +151,29 @@ function changeLanguage(lang) {
 
 //数据操作核心函数
 function addRecord() {
+    //获取输入数据
+    const amount = parseInt(dom.amountInput.value);
+
+    if (isNaN(amount) || amount <= 0) return alert("请输入有效的金额");
+
+    const type = document.querySelector(".type-btn.active").id === "incomeBtn" ? "income" : "expense";
+
+    const newRecord = {
+        id: Date.now(),
+        type: type,
+        amount: amount,
+        category: dom.categorySelect.value || "其他",
+        date: dom.dateInput.value || new Date().toISOString().split("T")[0],
+        note: dom.noteInput.value,
+
+    }
+    records.push(newRecord);
+
+    saveToLocalStorage();
+    clearForm();
+    render();
+
+    console.log("添加成功");
 
 }
 
@@ -146,13 +193,13 @@ function loadFromLocalStorage() {
 
 }
 
+function clearForm() {
 
-
-//dom
-const dom = {
-    languageSelect: document.getElementById("languageSelect"),
-    monthFilter: document.getElementById("monthFilter")
 }
+
+
+
+
 
 function generateMonthOptions() {
     const select = dom.monthFilter;
@@ -163,35 +210,27 @@ function generateMonthOptions() {
 function updateTexts() {
     const t = i18n[currentLang];
 
-    // Header 标题（你的HTML用的是 class="title"）
-    const titleEl = document.querySelector('.title');
-    if (titleEl) titleEl.textContent = t.title;
+    // Header 标题
+    if (dom.title) dom.title.textContent = t.title;
 
     // 添加区域标题
-    const addTitle = document.getElementById('addTitle');
-    if (addTitle) addTitle.textContent = t.addTitle;
+    if (dom.addTitle) dom.addTitle.textContent = t.addTitle;
 
     // 统计区域
-    const incomeLabel = document.getElementById('incomeLabel');
-    if (incomeLabel) incomeLabel.textContent = t.totalIncome;
+    if (dom.incomeLabel) dom.incomeLabel.textContent = t.totalIncome;
 
-    const expenseLabel = document.getElementById('expenseLabel');
-    if (expenseLabel) expenseLabel.textContent = t.totalExpense;
+    if (dom.expenseLabel) dom.expenseLabel.textContent = t.totalExpense;
 
-    const balanceLabel = document.getElementById('balanceLabel');
-    if (balanceLabel) balanceLabel.textContent = t.balance;
+    if (dom.balanceLabel) dom.balanceLabel.textContent = t.balance;
 
     // 列表标题
-    const listTitle = document.getElementById('listTitle');
-    if (listTitle) listTitle.textContent = t.listTitle;
+    if (dom.listTitle) dom.listTitle.textContent = t.listTitle;
 
     // 搜索框 placeholder
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+    if (dom.searchInput) dom.searchInput.placeholder = t.searchPlaceholder;
 
     // 添加按钮
-    const addBtn = document.getElementById('addRecordBtn');
-    if (addBtn) addBtn.textContent = t.addButton;
+    if (dom.addRecordBtn) dom.addRecordBtn.textContent = t.addButton;
 }
 
 //渲染函数
